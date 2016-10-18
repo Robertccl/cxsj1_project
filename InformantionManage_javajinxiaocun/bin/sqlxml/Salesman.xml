@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+       Copyright 2009-2012 the original author or authors.
+
+       Licensed under the Apache License, Version 2.0 (the "License");
+       you may not use this file except in compliance with the License.
+       You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+       Unless required by applicable law or agreed to in writing, software
+       distributed under the License is distributed on an "AS IS" BASIS,
+       WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+       See the License for the specific language governing permissions and
+       limitations under the License.
+
+-->
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Salesman">
+
+  <resultMap type="Model.Salesman" id="SalesmanResult">
+    <id column="db_id_sn" jdbcType="INTEGER" property="id"/>
+    <result column="db_number_sn" jdbcType="VARCHAR" property="number"/>
+    <result column="db_name_sn" jdbcType="VARCHAR" property="name"/>
+    <result column="db_sex_sn" jdbcType="BOOLEAN" property="gender"/>
+    <result column="db_phone_sn" jdbcType="VARCHAR" property="birthDate"/>
+    <result column="db_birthDate_sn" jdbcType="VARCHAR" property="phone"/>
+    <result column="db_address_sn" jdbcType="VARCHAR" property="address"/>
+    <result column="db_employedDate_sn" jdbcType="VARCHAR" property="employedDate"/>
+  </resultMap>
+
+  <select id="queryNumber" parameterType="String" resultMap="SalesmanResult">
+    SELECT * FROM Salesman WHERE 1=1 
+    <if test=" _parameter!=null and !&quot;&quot;.equals(num.trim()); ">and db_number_sn=#{num}</if>
+  </select>
+  
+</mapper>
